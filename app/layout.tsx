@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import { Inter, Manrope } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import { cn } from "@/lib/utils" // Utility to combine class names (optional but helpful)
+import { cn } from "@/lib/utils"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,13 +25,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head />
+      <head>
+        <link rel="icon" type="image/png" href="public/images/agvion-logo.png" />
+      </head>
       <body className={cn(inter.variable, manrope.variable)}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-        >
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           {children}
         </ThemeProvider>
       </body>
