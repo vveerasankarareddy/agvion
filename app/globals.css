@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Conthrax";
+  src: url("/fonts/conthrax-sb.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Adjust based on your header height */
+}
+
+body {
+  background-color: black;
+  color: white;
+  overflow-x: hidden;
+  font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Conthrax", sans-serif;
+}
+
+.font-conthrax {
+  font-family: "Conthrax", sans-serif;
+}
+
+.font-body {
+  font-family: var(--font-manrope), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+p,
+li,
+button,
+a {
+  font-family: var(--font-manrope), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.font-ui {
+  font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.bg-grid {
+  background-size: 50px 50px;
+  background-image: linear-gradient(to right, rgb(23, 23, 23, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(23, 23, 23, 0.1) 1px, transparent 1px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.slide-in {
+  animation: slideIn 0.8s ease-out;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+.testimonial-scroll {
+  animation: testimonialScroll 30s linear infinite;
+}
+
+.no-outline-input {
+  @apply bg-gray-800 border-gray-700 h-12 focus:ring-0 focus:ring-offset-0 focus:border-teal-600;
+}
+
+.no-outline-input:focus {
+  outline: none;
+  box-shadow: none;
+}
