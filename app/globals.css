@@ -1,0 +1,275 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Conthrax";
+  src: url("/fonts/conthrax-sb.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  background: radial-gradient(ellipse at top, rgba(14, 211, 207, 0.15) 0%, rgba(0, 0, 0, 0.9) 50%, black 100%),
+    linear-gradient(135deg, rgba(14, 211, 207, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%);
+  background-attachment: fixed;
+  color: white;
+  overflow-x: hidden;
+  font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Conthrax", sans-serif;
+}
+
+.font-conthrax {
+  font-family: "Conthrax", sans-serif;
+}
+
+.font-body {
+  font-family: var(--font-manrope), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+p,
+li,
+button,
+a {
+  font-family: var(--font-manrope), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.font-ui {
+  font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.bg-grid {
+  background-size: 50px 50px;
+  background-image: linear-gradient(to right, rgba(14, 211, 207, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(14, 211, 207, 0.1) 1px, transparent 1px);
+}
+
+.gradient-border {
+  position: relative;
+  background: linear-gradient(135deg, rgba(14, 211, 207, 0.2), rgba(14, 211, 207, 0.05));
+  border: 1px solid transparent;
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(14, 211, 207, 0.5), rgba(14, 211, 207, 0.1));
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  -webkit-mask-composite: xor;
+}
+
+.glow-effect {
+  box-shadow: 0 0 20px rgba(14, 211, 207, 0.3), 0 0 40px rgba(14, 211, 207, 0.1);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #0ed3cf 0%, #06b6d4 50%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.card-gradient {
+  background: linear-gradient(135deg, rgba(14, 211, 207, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(14, 211, 207, 0.2);
+}
+
+.hero-gradient {
+  background: radial-gradient(circle at center, rgba(14, 211, 207, 0.2) 0%, transparent 70%);
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(14, 211, 207, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(14, 211, 207, 0.6);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.slide-in {
+  animation: slideIn 0.8s ease-out;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.8s ease-out;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+.testimonial-scroll {
+  animation: testimonialScroll 30s linear infinite;
+}
+
+.no-outline-input {
+  @apply bg-gray-800/50 border-gray-700/50 h-12 focus:ring-0 focus:ring-offset-0 focus:border-teal-600 backdrop-blur-sm;
+}
+
+.no-outline-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(14, 211, 207, 0.3);
+}
+
+.nav-blur {
+  backdrop-filter: blur(20px);
+  background: rgba(0, 0, 0, 0.8);
+  border-bottom: 1px solid rgba(14, 211, 207, 0.2);
+}
+
+.section-gradient {
+  background: linear-gradient(135deg, rgba(14, 211, 207, 0.05) 0%, rgba(0, 0, 0, 0.2) 100%);
+}
+
+.docs-sidebar {
+  background: linear-gradient(180deg, rgba(14, 211, 207, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
+  backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(14, 211, 207, 0.2);
+}
+
+.docs-content {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(14, 211, 207, 0.1);
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(14, 211, 207, 0.2), transparent);
+  animation: shimmer 2s infinite;
+}
