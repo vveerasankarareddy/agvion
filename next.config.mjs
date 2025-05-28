@@ -10,9 +10,7 @@ const nextConfig = {
     unoptimized: true,
   },
   output: 'standalone',
-  experimental: {
-    outputFileTracingRoot: undefined,
-  },
+  // Removed experimental block to avoid unnecessary warning
 }
 
 export default nextConfig

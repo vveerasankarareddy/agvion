@@ -18,7 +18,6 @@ export const metadata: Metadata = {
   title: "A.G.V.I.O.N - AI-Powered Chatbot & Workflow Automation",
   description:
     "A.G.V.I.O.N is a no-code/low-code platform for building intelligent chatbots and automation workflows across messaging channels.",
-  generator: "v0.dev",
   icons: {
     icon: [
       { url: "/images/agvion-logo.png" },

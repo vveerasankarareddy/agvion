@@ -14,7 +14,12 @@ const Footer = () => {
           {/* Company Info */}
           <div className="sm:col-span-2 lg:col-span-2">
             <div className="flex items-center space-x-3 mb-4 sm:mb-6">
-              <Image src="/images/agvion-logo.png" alt="A.G.V.I.O.N Logo" width={32} height={32} className="w-8 h-8 flex-shrink-0" />
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-red-500 rounded-2xl blur opacity-30"></div>
+                <div className="relative bg-white p-2 rounded-2xl shadow-sm border border-gray-100">
+                  <Image src="/images/agvion-logo.png" alt="A.G.V.I.O.N Logo" width={32} height={32} className="w-8 h-8 flex-shrink-0" />
+                </div>
+              </div>
               <span className="font-conthrax text-lg sm:text-xl font-bold">A.G.V.I.O.N</span>
             </div>
 
@@ -23,49 +28,49 @@ const Footer = () => {
               with customers across all channels.
             </p>
 
-            <div className="flex space-x-4">
-              <Link href="#" className="text-gray-400 hover:text-orange-600 transition-colors p-1">
+            <div className="flex space-x-3">
+              <Link href="#" className="text-gray-400 hover:text-orange-500 transition-all duration-300 p-2 rounded-lg hover:bg-orange-50 hover:shadow-md transform hover:scale-105">
                 <Github className="w-5 h-5" />
                 <span className="sr-only">GitHub</span>
               </Link>
-              <Link href="#" className="text-gray-400 hover:text-orange-600 transition-colors p-1">
+              <Link href="#" className="text-gray-400 hover:text-orange-500 transition-all duration-300 p-2 rounded-lg hover:bg-orange-50 hover:shadow-md transform hover:scale-105">
                 <Twitter className="w-5 h-5" />
                 <span className="sr-only">Twitter</span>
               </Link>
-              <Link href="#" className="text-gray-400 hover:text-orange-600 transition-colors p-1">
+              <Link href="#" className="text-gray-400 hover:text-orange-500 transition-all duration-300 p-2 rounded-lg hover:bg-orange-50 hover:shadow-md transform hover:scale-105">
                 <Linkedin className="w-5 h-5" />
                 <span className="sr-only">LinkedIn</span>
               </Link>
-              <Link href="#" className="text-gray-400 hover:text-orange-600 transition-colors p-1">
+              <Link href="#" className="text-gray-400 hover:text-orange-500 transition-all duration-300 p-2 rounded-lg hover:bg-orange-50 hover:shadow-md transform hover:scale-105">
                 <Mail className="w-5 h-5" />
                 <span className="sr-only">Email</span>
               </Link>
             </div>
           </div>
 
-          {/* Platform and Company Links - Side by side on mobile only */}
+          {/* Platform and Company Links */}
           <div className="col-span-1 sm:col-span-2 lg:col-span-2 grid grid-cols-2 gap-4 sm:gap-8 lg:gap-0 lg:grid-cols-2">
             {/* Platform Links */}
             <div>
               <h3 className="font-semibold text-black mb-3 sm:mb-4 text-sm sm:text-base">Platform</h3>
-              <ul className="space-y-2 sm:space-y-3">
+              <ul className="space-y-1">
                 <li>
-                  <Link href="#features" className="text-gray-600 hover:text-orange-600 transition-colors text-sm sm:text-base block py-1">
+                  <Link href="#features" className="text-gray-600 hover:text-orange-500 transition-all duration-300 text-sm sm:text-base block py-2 px-3 rounded-lg hover:bg-gray-50 hover:translate-x-1">
                     Features
                   </Link>
                 </li>
                 <li>
-                  <Link href="#use-cases" className="text-gray-600 hover:text-orange-600 transition-colors text-sm sm:text-base block py-1">
+                  <Link href="#use-cases" className="text-gray-600 hover:text-orange-500 transition-all duration-300 text-sm sm:text-base block py-2 px-3 rounded-lg hover:bg-gray-50 hover:translate-x-1">
                     Use Cases
                   </Link>
                 </li>
                 <li>
-                  <Link href="#benefits" className="text-gray-600 hover:text-orange-600 transition-colors text-sm sm:text-base block py-1">
+                  <Link href="#benefits" className="text-gray-600 hover:text-orange-500 transition-all duration-300 text-sm sm:text-base block py-2 px-3 rounded-lg hover:bg-gray-50 hover:translate-x-1">
                     Benefits
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-gray-600 hover:text-orange-600 transition-colors text-sm sm:text-base block py-1">
+                  <Link href="#" className="text-gray-600 hover:text-orange-500 transition-all duration-300 text-sm sm:text-base block py-2 px-3 rounded-lg hover:bg-gray-50 hover:translate-x-1">
                     Integrations
                   </Link>
                 </li>
@@ -75,29 +80,29 @@ const Footer = () => {
             {/* Company Links */}
             <div>
               <h3 className="font-semibold text-black mb-3 sm:mb-4 text-sm sm:text-base">Company</h3>
-              <ul className="space-y-2 sm:space-y-3">
+              <ul className="space-y-1">
                 <li>
-                  <Link href="#about" className="text-gray-600 hover:text-orange-600 transition-colors text-sm sm:text-base block py-1">
+                  <Link href="#about" className="text-gray-600 hover:text-orange-500 transition-all duration-300 text-sm sm:text-base block py-2 px-3 rounded-lg hover:bg-gray-50 hover:translate-x-1">
                     About
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-gray-600 hover:text-orange-600 transition-colors text-sm sm:text-base block py-1">
+                  <Link href="#" className="text-gray-600 hover:text-orange-500 transition-all duration-300 text-sm sm:text-base block py-2 px-3 rounded-lg hover:bg-gray-50 hover:translate-x-1">
                     Blog
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-gray-600 hover:text-orange-600 transition-colors text-sm sm:text-base block py-1">
+                  <Link href="#" className="text-gray-600 hover:text-orange-500 transition-all duration-300 text-sm sm:text-base block py-2 px-3 rounded-lg hover:bg-gray-50 hover:translate-x-1">
                     Careers
                   </Link>
                 </li>
                 <li>
-                  <Link href="/terms-of-service" className="text-gray-600 hover:text-orange-600 transition-colors text-sm sm:text-base block py-1">
+                  <Link href="/terms-of-service" className="text-gray-600 hover:text-orange-500 transition-all duration-300 text-sm sm:text-base block py-2 px-3 rounded-lg hover:bg-gray-50 hover:translate-x-1">
                     Terms of Service
                   </Link>
                 </li>
                 <li>
-                  <Link href="/privacy-policy" className="text-gray-600 hover:text-orange-600 transition-colors text-sm sm:text-base block py-1">
+                  <Link href="/privacy-policy" className="text-gray-600 hover:text-orange-500 transition-all duration-300 text-sm sm:text-base block py-2 px-3 rounded-lg hover:bg-gray-50 hover:translate-x-1">
                     Privacy Policy
                   </Link>
                 </li>
@@ -111,14 +116,14 @@ const Footer = () => {
             <p className="text-gray-500 text-xs sm:text-sm text-center sm:text-left">
               © {currentYear} A.G.V.I.O.N. All rights reserved.
             </p>
-            <div className="flex flex-wrap justify-center sm:justify-end gap-4 sm:gap-6 text-xs sm:text-sm text-gray-500">
-              <Link href="/privacy-policy" className="hover:text-orange-600 transition-colors whitespace-nowrap">
+            <div className="flex flex-wrap justify-center sm:justify-end gap-2 text-xs sm:text-sm text-gray-500">
+              <Link href="/privacy-policy" className="hover:text-orange-500 transition-all duration-300 whitespace-nowrap rounded-lg hover:bg-gray-50 px-3 py-1 hover:shadow-sm">
                 Privacy Policy
               </Link>
-              <Link href="/terms-of-service" className="hover:text-orange-600 transition-colors whitespace-nowrap">
+              <Link href="/terms-of-service" className="hover:text-orange-500 transition-all duration-300 whitespace-nowrap rounded-lg hover:bg-gray-50 px-3 py-1 hover:shadow-sm">
                 Terms of Service
               </Link>
-              <Link href="#" className="hover:text-orange-600 transition-colors whitespace-nowrap">
+              <Link href="#" className="hover:text-orange-500 transition-all duration-300 whitespace-nowrap rounded-lg hover:bg-gray-50 px-3 py-1 hover:shadow-sm">
                 Cookies
               </Link>
             </div>

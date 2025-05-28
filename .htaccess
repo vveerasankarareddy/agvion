@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Block direct access to image files (jpg, jpeg, png, gif, webp)
+RewriteCond %{REQUEST_URI} \.(jpg|jpeg|png|gif|webp)$ [NC]
+
+# Allow access only if the referer is from agvion.com (no www)
+RewriteCond %{HTTP_REFERER} !^https?://agvion\.com/ [NC]
+
+# Redirect other access attempts to homepage
+RewriteRule .* / [R=302,L]
