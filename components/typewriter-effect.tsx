@@ -6,9 +6,10 @@ interface TypewriterEffectProps {
   words: string[]
   delay?: number
   loop?: boolean
+  onWordChange?: (index: number) => void
 }
 
-const TypewriterEffect = ({ words, delay = 3000, loop = true }: TypewriterEffectProps) => {
+const TypewriterEffect = ({ words, delay = 5000, loop = true, onWordChange }: TypewriterEffectProps) => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0)
   const [currentText, setCurrentText] = useState("")
   const [isDeleting, setIsDeleting] = useState(false)
@@ -18,36 +19,37 @@ const TypewriterEffect = ({ words, delay = 3000, loop = true }: TypewriterEffect
     const word = words[currentWordIndex]
 
     const timeout = setTimeout(() => {
-      // If deleting
       if (isDeleting) {
         setCurrentText(word.substring(0, currentText.length - 1))
-        setTypingSpeed(50) // Faster when deleting
+        setTypingSpeed(75)
 
-        // If deleted completely
         if (currentText.length === 0) {
           setIsDeleting(false)
-          setCurrentWordIndex((prev) => (prev + 1) % words.length)
-          setTypingSpeed(150) // Reset typing speed
+          const nextIndex = (currentWordIndex + 1) % words.length
+          setCurrentWordIndex(nextIndex)
+          // Notify parent component about word change
+          if (onWordChange) {
+            onWordChange(nextIndex)
+          }
+          setTypingSpeed(150)
         }
-      }
-      // If typing
-      else {
+      } else {
         setCurrentText(word.substring(0, currentText.length + 1))
 
-        // If completed typing
         if (currentText.length === word.length) {
-          // Pause at the end of the word
-          setTypingSpeed(delay)
-          setIsDeleting(true)
+          setTimeout(() => {
+            setIsDeleting(true)
+          }, delay)
+          return
         }
       }
     }, typingSpeed)
 
     return () => clearTimeout(timeout)
-  }, [currentText, isDeleting, currentWordIndex, words, delay, typingSpeed])
+  }, [currentText, isDeleting, currentWordIndex, words, delay, typingSpeed, onWordChange])
 
   return (
-    <div className="text-3xl font-bold text-teal-400">
+    <div className="text-3xl md:text-4xl font-bold orange-text">
       {currentText}
       <span className="animate-blink">|</span>
     </div>
