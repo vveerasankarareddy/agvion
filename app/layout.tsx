@@ -20,11 +20,11 @@ export const metadata: Metadata = {
     "A.G.V.I.O.N is a no-code/low-code platform for building intelligent chatbots and automation workflows across messaging channels.",
   icons: {
     icon: [
-      { url: "/images/agvion-logo.png" },
-      { url: "/images/agvion-logo.png", type: "image/png" }
+      { url: "/images/favicon.png" },
+      { url: "/images/favicon.png", type: "image/png" }
     ],
-    shortcut: "/images/agvion-logo.png",
-    apple: "/images/agvion-logo.png",
+    shortcut: "/images/favicon.png",
+    apple: "/images/favicon.png",
   }
 }
 

@@ -60,15 +60,21 @@ const Navbar = () => {
     }`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3 group">
+          {/* Logo - Fixed for mobile */}
+          <Link href="/" className="flex items-center space-x-2 sm:space-x-3 group flex-shrink-0">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-red-500 rounded-2xl blur opacity-30 group-hover:opacity-50 transition-opacity"></div>
-              <div className="relative bg-white p-2 rounded-2xl shadow-sm border border-gray-100">
-                <Image src="/images/agvion-logo.png" alt="A.G.V.I.O.N Logo" width={32} height={32} className="w-6 h-6" />
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-red-500 rounded-xl sm:rounded-2xl blur opacity-30 group-hover:opacity-50 transition-opacity"></div>
+              <div className="relative bg-white p-1.5 sm:p-2 rounded-xl sm:rounded-2xl shadow-sm border border-gray-100">
+                <Image 
+                  src="/images/agvion-logo.png" 
+                  alt="A.G.V.I.O.N Logo" 
+                  width={24} 
+                  height={24} 
+                  className="w-5 h-5 sm:w-6 sm:h-6 object-contain" 
+                />
               </div>
             </div>
-            <span className="font-conthrax text-xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
+            <span className="font-conthrax text-lg sm:text-xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent whitespace-nowrap">
               A.G.V.I.O.N
             </span>
           </Link>
@@ -91,7 +97,7 @@ const Navbar = () => {
           </nav>
 
           {/* CTA Buttons */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-2 sm:space-x-3">
             <Button
               variant="ghost"
               className="hidden sm:flex text-gray-600 hover:text-orange-600 hover:bg-orange-50 rounded-xl px-4 py-2 transition-all duration-200"
@@ -99,16 +105,18 @@ const Navbar = () => {
             >
               Contact
             </Button>
+            {/* Mobile-optimized Join Waitlist button */}
             <Button
-              className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-6 py-2.5 rounded-2xl font-medium shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
+              className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-3 py-2 sm:px-6 sm:py-2.5 rounded-xl sm:rounded-2xl text-sm sm:text-base font-medium shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
               onClick={() => scrollToSection("#waiting-list")}
             >
-              Join Waitlist
+              <span className="sm:hidden">Join</span>
+              <span className="hidden sm:inline">Join Waitlist</span>
             </Button>
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden p-2.5 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-xl transition-all duration-200"
+              className="md:hidden p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-xl transition-all duration-200 flex-shrink-0"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -117,61 +125,83 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Fixed positioning and functionality */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white/95 backdrop-blur-md border-t border-gray-100 shadow-lg rounded-b-3xl mx-4 mb-4"
-          >
-            <div className="px-6 py-6 space-y-2">
-              <MobileNavItem
-                title="Home"
-                href="#hero"
-                onClick={scrollToSection}
-                setMobileMenuOpen={setMobileMenuOpen}
-              />
-              <MobileNavItem
-                title="About"
-                href="#about"
-                onClick={scrollToSection}
-                setMobileMenuOpen={setMobileMenuOpen}
-              />
-              <MobileNavItem
-                title="Features"
-                href="#features"
-                onClick={scrollToSection}
-                setMobileMenuOpen={setMobileMenuOpen}
-              />
-              <MobileNavItem
-                title="Use Cases"
-                href="#use-cases"
-                onClick={scrollToSection}
-                setMobileMenuOpen={setMobileMenuOpen}
-              />
-              <MobileNavItem
-                title="Benefits"
-                href="#benefits"
-                onClick={scrollToSection}
-                setMobileMenuOpen={setMobileMenuOpen}
-              />
-              <MobileNavItem title="Documentation" href="/terms-of-service" setMobileMenuOpen={setMobileMenuOpen} />
-              
-              <div className="pt-4 border-t border-gray-100">
-                <Button
-                  className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white w-full py-3 rounded-2xl font-medium shadow-lg hover:shadow-xl transition-all duration-200"
-                  onClick={() => {
-                    scrollToSection("#waiting-list")
-                    setMobileMenuOpen(false)
-                  }}
-                >
-                  Join Waitlist
-                </Button>
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 md:hidden"
+              onClick={() => setMobileMenuOpen(false)}
+            />
+            
+            {/* Mobile Menu Panel */}
+            <motion.div
+              initial={{ opacity: 0, y: -20, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -20, scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+              className="absolute top-full left-4 right-4 bg-white/95 backdrop-blur-md border border-gray-100 shadow-xl rounded-2xl z-50 md:hidden"
+            >
+              <div className="px-4 py-4 space-y-1">
+                <MobileNavItem
+                  title="Home"
+                  href="#hero"
+                  onClick={scrollToSection}
+                  setMobileMenuOpen={setMobileMenuOpen}
+                  isActive={activeSection === "#hero"}
+                />
+                <MobileNavItem
+                  title="About"
+                  href="#about"
+                  onClick={scrollToSection}
+                  setMobileMenuOpen={setMobileMenuOpen}
+                  isActive={activeSection === "#about"}
+                />
+                <MobileNavItem
+                  title="Features"
+                  href="#features"
+                  onClick={scrollToSection}
+                  setMobileMenuOpen={setMobileMenuOpen}
+                  isActive={activeSection === "#features"}
+                />
+                <MobileNavItem
+                  title="Use Cases"
+                  href="#use-cases"
+                  onClick={scrollToSection}
+                  setMobileMenuOpen={setMobileMenuOpen}
+                  isActive={activeSection === "#use-cases"}
+                />
+                <MobileNavItem
+                  title="Benefits"
+                  href="#benefits"
+                  onClick={scrollToSection}
+                  setMobileMenuOpen={setMobileMenuOpen}
+                  isActive={activeSection === "#benefits"}
+                />
+                <MobileNavItem 
+                  title="Documentation" 
+                  href="/terms-of-service" 
+                  setMobileMenuOpen={setMobileMenuOpen} 
+                />
+                
+                <div className="pt-3 border-t border-gray-100 mt-3">
+                  <Button
+                    className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white w-full py-2.5 rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-200"
+                    onClick={() => {
+                      scrollToSection("#waiting-list")
+                      setMobileMenuOpen(false)
+                    }}
+                  >
+                    Join Waitlist
+                  </Button>
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </header>
@@ -255,7 +285,7 @@ const NavDropdown = ({ title, isActive, items, onClick }: any) => {
   )
 }
 
-const MobileNavItem = ({ title, href, onClick, setMobileMenuOpen }: any) => {
+const MobileNavItem = ({ title, href, onClick, setMobileMenuOpen, isActive }: any) => {
   if (href.startsWith("#")) {
     return (
       <button
@@ -263,7 +293,11 @@ const MobileNavItem = ({ title, href, onClick, setMobileMenuOpen }: any) => {
           onClick(href)
           setMobileMenuOpen(false)
         }}
-        className="block w-full text-left text-gray-600 hover:text-orange-600 hover:bg-orange-50 py-3 px-4 rounded-xl transition-all duration-200"
+        className={`block w-full text-left py-3 px-4 rounded-xl transition-all duration-200 font-medium ${
+          isActive
+            ? "text-orange-600 bg-orange-50"
+            : "text-gray-600 hover:text-orange-600 hover:bg-orange-50"
+        }`}
       >
         {title}
       </button>
@@ -273,7 +307,7 @@ const MobileNavItem = ({ title, href, onClick, setMobileMenuOpen }: any) => {
       <Link
         href={href}
         onClick={() => setMobileMenuOpen(false)}
-        className="block w-full text-left text-gray-600 hover:text-orange-600 hover:bg-orange-50 py-3 px-4 rounded-xl transition-all duration-200"
+        className="block w-full text-left text-gray-600 hover:text-orange-600 hover:bg-orange-50 py-3 px-4 rounded-xl transition-all duration-200 font-medium"
       >
         {title}
       </Link>

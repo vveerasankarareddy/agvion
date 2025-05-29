@@ -42,10 +42,10 @@ export default function TermsOfService() {
   const filteredSections = sections.filter((section) => section.title.toLowerCase().includes(searchTerm.toLowerCase()))
 
   return (
-    <div className="flex min-h-screen flex-col bg-black text-white">
+    <div className="flex min-h-screen flex-col bg-gradient-to-br from-gray-50 to-white">
       <Navbar />
 
-      <main className="flex-1 pt-24 pb-16">
+      <main className="flex-1 pt-20 pb-16">
         <div className="container mx-auto px-4">
           <motion.div
             className="mb-8"
@@ -55,10 +55,10 @@ export default function TermsOfService() {
           >
             <Link
               href="/"
-              className="inline-flex items-center text-gray-400 hover:text-teal-400 transition-colors group"
+              className="inline-flex items-center text-gray-600 hover:text-orange-600 transition-colors group"
             >
               <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
-              <span className="font-body">Back to Home</span>
+              <span className="font-medium">Back to Home</span>
             </Link>
           </motion.div>
 
@@ -70,8 +70,10 @@ export default function TermsOfService() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div className="docs-sidebar rounded-xl p-6 sticky top-24">
-                <h3 className="font-conthrax text-lg font-bold mb-4 text-gradient">Documentation</h3>
+              <div className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl p-6 sticky top-24 shadow-lg">
+                <h3 className="text-lg font-bold mb-6 bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
+                  Documentation
+                </h3>
 
                 {/* Search */}
                 <div className="relative mb-6">
@@ -81,30 +83,30 @@ export default function TermsOfService() {
                     placeholder="Search sections..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2 bg-gray-800/50 border border-gray-700/50 rounded-lg text-sm focus:outline-none focus:border-teal-500 transition-colors"
+                    className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all"
                   />
                 </div>
 
-                <nav className="space-y-2">
+                <nav className="space-y-1">
                   {filteredSections.map((section, index) => (
                     <motion.button
                       key={section.id}
                       onClick={() => setActiveSection(section.id)}
-                      className={`w-full flex items-center px-3 py-2 text-sm rounded-lg transition-all duration-300 group ${
+                      className={`w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 group ${
                         activeSection === section.id
-                          ? "bg-teal-500/20 text-teal-400 border-l-2 border-teal-500"
-                          : "text-gray-400 hover:text-white hover:bg-gray-800/50"
+                          ? "bg-gradient-to-r from-orange-50 to-red-50 text-orange-600 border border-orange-100 shadow-sm"
+                          : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                       }`}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: index * 0.05 }}
-                      whileHover={{ x: 5 }}
+                      whileHover={{ x: 2 }}
                     >
                       <span className="mr-3 group-hover:scale-110 transition-transform">{section.icon}</span>
                       {section.title}
                       <ChevronRight
                         className={`ml-auto w-4 h-4 transition-transform ${
-                          activeSection === section.id ? "rotate-90" : ""
+                          activeSection === section.id ? "rotate-90 text-orange-500" : ""
                         }`}
                       />
                     </motion.button>
@@ -120,16 +122,16 @@ export default function TermsOfService() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <div className="docs-content rounded-xl p-8">
+              <div className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl p-8 shadow-lg">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <h1 className="font-conthrax text-4xl md:text-5xl font-bold mb-4 text-gradient">
+                  <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
                     Terms and Conditions
                   </h1>
-                  <p className="font-body text-gray-400 mb-8 text-lg">Last Updated: May 21, 2025</p>
+                  <p className="text-gray-600 mb-8 text-lg">Last Updated: May 21, 2025</p>
                 </motion.div>
 
                 <AnimatePresence mode="wait">
@@ -145,21 +147,21 @@ export default function TermsOfService() {
                       <SectionContent
                         title="1. Introduction"
                         content={
-                          <div className="space-y-4">
+                          <div className="space-y-6">
                             <motion.div
-                              className="gradient-border rounded-lg p-6"
+                              className="bg-gradient-to-r from-orange-50 to-red-50 border border-orange-100 rounded-2xl p-6"
                               initial={{ opacity: 0, scale: 0.95 }}
                               animate={{ opacity: 1, scale: 1 }}
                               transition={{ duration: 0.5, delay: 0.1 }}
                             >
-                              <p className="font-body text-gray-300 leading-relaxed">
-                                Welcome to <span className="text-teal-400 font-semibold">A.G.V.I.O.N</span>, the
+                              <p className="text-gray-700 leading-relaxed">
+                                Welcome to <span className="text-orange-600 font-semibold">A.G.V.I.O.N</span>, the
                                 next-generation AI-powered chatbot and workflow automation platform. These Terms and
                                 Conditions ("Terms") govern your access to and use of our revolutionary Service.
                               </p>
                             </motion.div>
                             <motion.p
-                              className="font-body text-gray-300 leading-relaxed"
+                              className="text-gray-700 leading-relaxed"
                               initial={{ opacity: 0, y: 10 }}
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ duration: 0.5, delay: 0.2 }}
@@ -199,13 +201,13 @@ export default function TermsOfService() {
                             ].map((item, index) => (
                               <motion.div
                                 key={index}
-                                className="card-gradient rounded-lg p-4 border-l-4 border-teal-500"
+                                className="bg-white border border-gray-200 rounded-xl p-4 border-l-4 border-l-orange-500 shadow-sm"
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                               >
-                                <span className="font-semibold text-teal-400">"{item.term}"</span>
-                                <span className="font-body text-gray-300"> {item.definition}</span>
+                                <span className="font-semibold text-orange-600">"{item.term}"</span>
+                                <span className="text-gray-700"> {item.definition}</span>
                               </motion.div>
                             ))}
                           </div>
@@ -219,12 +221,12 @@ export default function TermsOfService() {
                         content={
                           <div className="space-y-6">
                             <motion.div
-                              className="hero-gradient rounded-xl p-6"
+                              className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 rounded-2xl p-6"
                               initial={{ opacity: 0, scale: 0.95 }}
                               animate={{ opacity: 1, scale: 1 }}
                               transition={{ duration: 0.5, delay: 0.1 }}
                             >
-                              <p className="font-body text-gray-300 leading-relaxed mb-4">
+                              <p className="text-gray-700 leading-relaxed mb-4">
                                 A.G.V.I.O.N provides an advanced AI-powered chatbot and workflow automation platform
                                 designed to revolutionize how businesses automate customer interactions across multiple
                                 messaging platforms.
@@ -240,14 +242,14 @@ export default function TermsOfService() {
                               ].map((feature, index) => (
                                 <motion.div
                                   key={index}
-                                  className="card-gradient rounded-lg p-4 shimmer"
+                                  className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow"
                                   initial={{ opacity: 0, y: 20 }}
                                   animate={{ opacity: 1, y: 0 }}
                                   transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
                                   whileHover={{ scale: 1.02 }}
                                 >
-                                  <h4 className="font-semibold text-teal-400 mb-2">{feature.title}</h4>
-                                  <p className="text-sm text-gray-400">{feature.desc}</p>
+                                  <h4 className="font-semibold text-orange-600 mb-2">{feature.title}</h4>
+                                  <p className="text-sm text-gray-600">{feature.desc}</p>
                                 </motion.div>
                               ))}
                             </div>
@@ -262,26 +264,26 @@ export default function TermsOfService() {
                         content={
                           <div className="space-y-6">
                             <motion.div
-                              className="bg-gradient-to-r from-red-500/10 to-orange-500/10 border border-red-500/30 rounded-lg p-6"
+                              className="bg-gradient-to-r from-red-50 to-orange-50 border border-red-200 rounded-2xl p-6"
                               initial={{ opacity: 0, scale: 0.95 }}
                               animate={{ opacity: 1, scale: 1 }}
                               transition={{ duration: 0.5, delay: 0.1 }}
                             >
-                              <h4 className="font-semibold text-red-400 mb-4 flex items-center">
+                              <h4 className="font-semibold text-red-600 mb-4 flex items-center">
                                 <CreditCard className="w-5 h-5 mr-2" />
                                 Important Payment Information
                               </h4>
-                              <ul className="space-y-3 font-body text-gray-300">
+                              <ul className="space-y-3 text-gray-700">
                                 <li className="flex items-start">
-                                  <span className="w-2 h-2 bg-red-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                  <span className="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                                   Subscription fees are billed in advance on a monthly or annual basis
                                 </li>
                                 <li className="flex items-start">
-                                  <span className="w-2 h-2 bg-red-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                  <span className="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                                   Payments are non-refundable except as required by law
                                 </li>
                                 <li className="flex items-start">
-                                  <span className="w-2 h-2 bg-red-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                  <span className="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                                   Late payments may result in service suspension
                                 </li>
                               </ul>
@@ -297,22 +299,22 @@ export default function TermsOfService() {
                         content={
                           <div className="space-y-6">
                             <motion.div
-                              className="bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/30 rounded-lg p-6"
+                              className="bg-gradient-to-r from-purple-50 to-blue-50 border border-purple-200 rounded-2xl p-6"
                               initial={{ opacity: 0, scale: 0.95 }}
                               animate={{ opacity: 1, scale: 1 }}
                               transition={{ duration: 0.5, delay: 0.1 }}
                             >
-                              <h4 className="font-semibold text-purple-400 mb-4 flex items-center">
+                              <h4 className="font-semibold text-purple-600 mb-4 flex items-center">
                                 <Bot className="w-5 h-5 mr-2" />
                                 Artificial Intelligence Disclaimer
                               </h4>
-                              <div className="space-y-4 font-body text-gray-300">
+                              <div className="space-y-4 text-gray-700">
                                 <p>
                                   Our Service uses cutting-edge artificial intelligence to generate responses and
                                   automate workflows.
                                 </p>
-                                <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4">
-                                  <p className="text-yellow-400 font-medium">
+                                <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
+                                  <p className="text-yellow-700 font-medium">
                                     ⚠️ While we strive for accuracy, we do not guarantee the correctness or
                                     appropriateness of AI-generated content.
                                   </p>
@@ -327,18 +329,57 @@ export default function TermsOfService() {
                       />
                     )}
 
-                    {/* Add more sections as needed */}
+                    {/* Account Management Section */}
+                    {activeSection === "account" && (
+                      <SectionContent
+                        title="4. Account Management"
+                        content={
+                          <div className="space-y-6">
+                            <motion.div
+                              className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-2xl p-6"
+                              initial={{ opacity: 0, scale: 0.95 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              transition={{ duration: 0.5, delay: 0.1 }}
+                            >
+                              <h4 className="font-semibold text-green-600 mb-4 flex items-center">
+                                <Users className="w-5 h-5 mr-2" />
+                                Account Responsibilities
+                              </h4>
+                              <div className="space-y-4 text-gray-700">
+                                <p>You are responsible for maintaining the security of your account and password.</p>
+                                <ul className="space-y-2 ml-4">
+                                  <li className="flex items-start">
+                                    <span className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                    Use strong, unique passwords for your account
+                                  </li>
+                                  <li className="flex items-start">
+                                    <span className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                    Notify us immediately of any unauthorized access
+                                  </li>
+                                  <li className="flex items-start">
+                                    <span className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                    Keep your contact information up to date
+                                  </li>
+                                </ul>
+                              </div>
+                            </motion.div>
+                          </div>
+                        }
+                      />
+                    )}
+
+                    {/* Add remaining sections with similar styling */}
                   </motion.div>
                 </AnimatePresence>
 
                 {/* Navigation */}
                 <motion.div
-                  className="flex justify-between items-center mt-12 pt-8 border-t border-gray-800"
+                  className="flex justify-between items-center mt-12 pt-8 border-t border-gray-200"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.5 }}
                 >
-                  <div className="text-sm text-gray-400">
+                  <div className="text-sm text-gray-500">
                     Section {sections.findIndex((s) => s.id === activeSection) + 1} of {sections.length}
                   </div>
                   <div className="flex gap-3">
@@ -350,7 +391,7 @@ export default function TermsOfService() {
                         }
                       }}
                       disabled={sections.findIndex((s) => s.id === activeSection) === 0}
-                      className="px-4 py-2 bg-gray-800 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg transition-colors"
+                      className="px-4 py-2 bg-gray-100 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed rounded-xl transition-colors text-gray-700"
                     >
                       Previous
                     </button>
@@ -362,7 +403,7 @@ export default function TermsOfService() {
                         }
                       }}
                       disabled={sections.findIndex((s) => s.id === activeSection) === sections.length - 1}
-                      className="px-4 py-2 bg-teal-600 hover:bg-teal-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg transition-colors"
+                      className="px-4 py-2 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 disabled:opacity-50 disabled:cursor-not-allowed rounded-xl transition-colors text-white shadow-lg hover:shadow-xl"
                     >
                       Next
                     </button>
@@ -386,7 +427,7 @@ const SectionContent = ({ title, content }: { title: string; content: React.Reac
     transition={{ duration: 0.5 }}
     className="space-y-6"
   >
-    <h2 className="font-conthrax text-2xl font-bold text-gradient">{title}</h2>
+    <h2 className="text-2xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">{title}</h2>
     {content}
   </motion.section>
 )
